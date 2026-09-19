@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07111f">
+<meta name="description" content="Revenue Dock is a local-first quote and proposal builder for freelancers and small studios.">
+<title>Revenue Dock — Close the next deal faster</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="nav">
+<a class="brand" href="#top"><span class="logo">R</span><span><b>Revenue Dock</b><small>Offers that look ready to buy.</small></span></a>
+<nav><a href="#builder">Builder</a><a href="#pricing">Pricing</a><a href="#support">Support</a></nav>
+</header>
+<main id="top">
+<section class="hero">
+<div class="hero-copy">
+<span class="eyebrow">OPEN SOURCE • LOCAL FIRST</span>
+<h1>Turn a rough quote into a <em>client-ready offer.</em></h1>
+<p>Build a clean proposal, calculate the deposit, and print a polished PDF without a spreadsheet or account.</p>
+<div class="actions"><a class="btn primary" href="#builder">Build an offer</a><a class="btn ghost" href="#why">Why Revenue Dock?</a></div>
+<div class="proof"><span>✓ No account</span><span>✓ No server</span><span>✓ Your numbers stay local</span></div>
+</div>
+<div class="hero-preview glass">
+<div class="chrome"><i></i><i></i><i></i><span>Offer preview</span></div>
+<div class="proposal"><div class="kicker">PROPOSAL</div><h2>Brand website</h2><p>Prepared for Northstar Studio</p>
+<div class="row"><span>Design sprint</span><b>$1,200</b></div><div class="row"><span>Development</span><b>$2,400</b></div>
+<div class="total"><span>Total</span><strong>$3,600</strong></div><div class="note">50% to start • balance on delivery</div>
+</div>
+</div>
+</section>
+<section id="why" class="section">
+<div class="section-head"><span class="eyebrow">THE WEDGE</span><h2>One painful workflow. Done properly.</h2><p>Revenue Dock starts with the moment between “here’s my price” and “send me the invoice.” The product can grow into hosted proposals, payments and client analytics.</p></div>
+<div class="cards"><article><span>01</span><h3>Build</h3><p>Add services, quantities, prices and payment terms in seconds.</p></article><article><span>02</span><h3>Present</h3><p>Show the client a clean offer instead of a raw message or spreadsheet.</p></article><article><span>03</span><h3>Upgrade</h3><p>The future paid layer can add hosted links, branding, analytics and payment requests.</p></article></div>
+</section>
+<section id="builder" class="section builder">
+<div class="section-head"><span class="eyebrow">FREE BUILDER</span><h2>Build your next offer.</h2></div>
+<div class="builder-grid">
+<form class="panel" id="offerForm">
+<label>Project title<input id="title" value="Brand website" required></label>
+<label>Client<input id="client" value="Northstar Studio"></label>
+<label>Currency<select id="currency"><option value="$">$ USD</option><option value="€">€ EUR</option><option value="£">£ GBP</option><option value="﷼">﷼ IRR</option></select></label>
+<div class="lineitems"><div class="linehead"><span>Service</span><span>Qty</span><span>Price</span><span></span></div><div id="items"></div></div>
+<button class="btn ghost full" type="button" id="add">+ Add line item</button>
+<div class="two"><label>Deposit %<input id="deposit" type="number" min="0" max="100" value="50"></label><label>Payment note<input id="note" value="50% to start • balance on delivery"></label></div>
+<div class="actions"><button class="btn primary" type="submit">Update preview</button><button class="btn ghost" type="button" id="save">Save locally</button><button class="btn ghost" type="button" id="print">Print / PDF</button></div>
+<p class="tiny">Local storage only. Revenue Dock does not process payments.</p>
+</form>
+<aside class="panel client-view"><div class="pill">CLIENT VIEW</div><span class="eyebrow">PROPOSAL</span><h3 id="outTitle">Brand website</h3><p id="outClient">Prepared for Northstar Studio</p><div id="outItems"></div>
+<div class="total"><span>Total</span><strong id="outTotal">$3,600</strong></div><div class="sum"><span>Deposit</span><b id="outDeposit">$1,800</b></div><div class="sum"><span>Balance</span><b id="outBalance">$1,800</b></div><div class="note" id="outNote">50% to start • balance on delivery</div>
+</aside>
+</div>
+</section>
+<section id="pricing" class="section">
+<div class="section-head"><span class="eyebrow">MONETIZATION PATH</span><h2>Free tool now. Paid workflow later.</h2></div>
+<div class="pricing">
+<article class="price"><span class="tag">FREE</span><h3>Dock</h3><div class="amount">$0</div><ul><li>Local proposal builder</li><li>Unlimited line items</li><li>Print / PDF</li><li>Open source</li></ul><a class="btn ghost full" href="#builder">Use it</a></article>
+<article class="price featured"><span class="tag">PLANNED</span><h3>Pro</h3><div class="amount">$9<span>/mo</span></div><ul><li>Hosted proposal links</li><li>Custom branding</li><li>Lead capture</li><li>Analytics + payment links</li></ul><a class="btn primary full" href="#support">Support the build</a></article>
+<article class="price"><span class="tag">PLANNED</span><h3>Studio</h3><div class="amount">$29<span>/mo</span></div><ul><li>Team workspaces</li><li>Shared templates</li><li>Client history</li><li>API + automations</li></ul><a class="btn ghost full" href="#support">Follow the project</a></article>
+</div>
+</section>
+<section id="support" class="section support">
+<div class="section-head"><span class="eyebrow">SUPPORT OPEN SOURCE</span><h2>Help fund the next release.</h2><p>Donations are optional and support hosting, design, testing and future integrations.</p></div>
+<div class="wallets">
+<button class="wallet" data-copy="bc1qghmvawynutlxlzs7hcszwrpmv6a8gjz0g42m5f"><b>BTC</b><code>bc1qghmvawynutlxlzs7hcszwrpmv6a8gjz0g42m5f</code></button>
+<button class="wallet" data-copy="0xB2C155514AD2c1383346715B92FcF123A1E1CA3f"><b>ETH — Ethereum</b><code>0xB2C155514AD2c1383346715B92FcF123A1E1CA3f</code></button>
+<button class="wallet" data-copy="TLTPdYMeRfJgaTtVXcpFTF7m5vjJDXp1Uq"><b>USDT — TRC20</b><code>TLTPdYMeRfJgaTtVXcpFTF7m5vjJDXp1Uq</code></button>
+<button class="wallet" data-copy="iCi28FGDExvy8tuHw2MP63w26A3uQYHSD1vVqwUjkBg"><b>SOL — Solana</b><code>iCi28FGDExvy8tuHw2MP63w26A3uQYHSD1vVqwUjkBg</code></button>
+</div>
+<p class="tiny">Tap a wallet to copy. Always verify the asset and network before sending.</p>
+</section>
+</main>
+<footer class="footer"><div><b>Revenue Dock</b><span>Build small. Sell clearly. Learn fast.</span></div><a href="https://github.com/eliotanderson351-afk/revenue-dock">GitHub →</a></footer>
+<script src="app.js" defer></script>
+</body>
+</html>
