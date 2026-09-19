@@ -1,47 +1,32 @@
-# Revenue Dock
+# Revenue Dock — Indie Product Lab
 
-A polished, local-first quote and proposal builder for freelancers, consultants and small studios.
+A growing collection of small, useful products designed around clear user problems and testable paths to revenue.
 
-## The product thesis
+> One product per experiment. Build fast. Measure what people actually use.
 
-The wedge is simple: the moment between "here is my price" and "let's get this deal started."
+## Projects
 
-The free product helps a user create a professional offer with deterministic totals. The commercial layer can later sell the workflow around that document:
+| Project | What it tests | Monetization path |
+| --- | --- | --- |
+| **Revenue Dock** | Quotes and proposals | Hosted Pro, teams, payment links |
+| **LinkPay Mini** | Focused payment pages | Hosted pages, checkout integrations |
+| **Waitlist Spark** | Waitlist + referral growth | Hosted analytics, referral automation |
+| **Leadboard Lite** | Lightweight CRM workflow | Hosted workspaces, reminders, team tier |
+| **PricePilot** | Package pricing | Hosted calculators, pricing analytics |
+| **ReviewDrop** | Testimonial collection | Hosted widgets, moderation, branded requests |
 
-- Hosted proposal links
-- Custom branding and domains
-- Lead capture
-- View and open analytics
-- Payment links and webhooks
-- Saved client history
-- Team workspaces
-- Integrations and API
+## Product strategy
 
-The goal is not to promise income. The goal is to build a useful product with an observable path from free adoption to paid features.
+Each project starts as a fast, useful MVP with no fake claims about revenue. The next versions can add accounts, hosted links, analytics, integrations, and paid tiers only after the underlying workflow proves useful.
 
-## Included in the MVP
+The experiments intentionally cover different revenue shapes:
 
-- Responsive premium UI
-- Offer builder
-- Add and remove services
-- Quantity and price calculations
-- Deposit and balance calculations
-- LocalStorage persistence
-- Print-to-PDF mode
-- Copyable donation addresses
-- No account and no backend required
-
-## Monetization experiment
-
-Suggested initial tests:
-
-1. Free local tool as top-of-funnel.
-2. Hosted Pro at an experimental 9 USD/month.
-3. Studio tier at an experimental 29 USD/month.
-4. One-time niche template packs.
-5. Referral integrations for invoicing and payment providers.
-
-These prices are experiments, not forecasts.
+- B2B SaaS subscriptions
+- Usage or hosted-feature upsells
+- Template / niche-product sales
+- Referral and integration revenue
+- Team / workspace plans
+- Payment-adjacent products
 
 ## Support
 
@@ -59,22 +44,10 @@ iCi28FGDExvy8tuHw2MP63w26A3uQYHSD1vVqwUjkBg
 
 Always verify the asset and network before sending.
 
-## Local development
+## Repository map
 
-No build step is required. Open index.html directly, or serve the folder with any static HTTP server.
-
-## Roadmap
-
-- Hosted proposal pages
-- Shareable links
-- Analytics
-- Templates
-- Optional accounts
-- Payment links
-- Webhooks
-- Provider adapters
-- Client follow-up automations
-- Team workspaces
+`index.html` and `app.js` at the root are the original Revenue Dock MVP.
+Each experiment lives in its own folder and is intentionally dependency-light.
 
 ## License
 
