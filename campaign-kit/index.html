@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Campaign Kit — UTM Builder</title>
+<style>
+:root{--bg:#08111f;--panel:#101c2e;--line:#243653;--text:#edf5ff;--muted:#9eb0c9;--accent:#63a8ff;--accent2:#8c7cff;--good:#50d7a7}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at top,#122642 0,#08111f 45%,#050a12 100%);color:var(--text);min-height:100vh}main{max-width:1120px;margin:auto;padding:42px 20px 64px}.top{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:24px}.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8ebdff}.h1{font-size:clamp(32px,5vw,58px);font-weight:800;line-height:1;margin:8px 0}.sub{color:var(--muted);max-width:670px;line-height:1.6}.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.card{background:linear-gradient(180deg,#121f33cc,#0d1828dd);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 20px 60px #0004}.label{display:block;color:#adc0da;font-size:12px;font-weight:700;margin:0 0 7px}.field{margin-bottom:15px}.input{width:100%;background:#0a1422;border:1px solid #2a3d5c;color:var(--text);border-radius:12px;padding:13px 14px;outline:0}.input:focus{border-color:var(--accent);box-shadow:0 0 0 3px #63a8ff1c}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{border:0;border-radius:12px;padding:13px 16px;font-weight:800;cursor:pointer;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white}.btn.secondary{background:#15243a;border:1px solid #304463}.url{background:#07101c;border:1px solid #253a58;padding:15px;border-radius:14px;line-height:1.6;word-break:break-word;color:#d9e8ff}.small{font-size:12px;color:var(--muted)}.history{display:grid;gap:10px;margin-top:18px}.item{padding:12px;border:1px solid #213550;border-radius:13px;background:#0b1523}.item b{display:block;font-size:13px;margin-bottom:6px}@media(max-width:820px){.grid{grid-template-columns:1fr}.top{align-items:start;flex-direction:column}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<div class="top"><div><div class="eyebrow">Campaign Kit</div><h1>Build clean UTM links.</h1><div class="sub">A fast, privacy-first campaign URL builder for ads, newsletters, social posts and client work.</div></div><button class="btn secondary" id="clear">Clear history</button></div>
+<div class="grid">
+<section class="card">
+<div class="field"><label class="label">Landing page URL</label><input class="input" id="url" placeholder="https://example.com/pricing"></div>
+<div class="row">
+<div class="field"><label class="label">Source</label><input class="input" id="source" placeholder="instagram"></div>
+<div class="field"><label class="label">Medium</label><input class="input" id="medium" placeholder="social"></div>
+</div>
+<div class="row">
+<div class="field"><label class="label">Campaign</label><input class="input" id="campaign" placeholder="fall-launch"></div>
+<div class="field"><label class="label">Content (optional)</label><input class="input" id="content" placeholder="story-01"></div>
+</div>
+<div class="row">
+<div class="field"><label class="label">Term (optional)</label><input class="input" id="term" placeholder="brand-keyword"></div>
+<div class="field"><label class="label">Quick preset</label><select class="input" id="preset"><option value="">Choose…</option><option>Instagram</option><option>Google Ads</option><option>Newsletter</option><option>LinkedIn</option></select></div>
+</div>
+<button class="btn" id="save">Save campaign</button>
+</section>
+<section class="card">
+<div class="small">Generated URL</div><div class="url" id="out">Fill the fields to generate a link.</div><div style="display:flex;gap:10px;margin-top:12px"><button class="btn" id="copy">Copy</button><button class="btn secondary" id="share">Share</button></div>
+<div class="history" id="history"></div>
+</section>
+</div>
+</main>
+<script>
+const $=id=>document.getElementById(id), ids=['url','source','medium','campaign','content','term'];
+function build(){let base=$('url').value.trim();if(!base){$('out').textContent='Fill the fields to generate a link.';return ''}try{let u=new URL(base);const m={source:'utm_source',medium:'utm_medium',campaign:'utm_campaign',content:'utm_content',term:'utm_term'};ids.slice(1).forEach(id=>{let v=$(id).value.trim();if(v)u.searchParams.set(m[id],v)});$('out').textContent=u.toString();return u.toString()}catch{$('out').textContent='Enter a valid URL.';return ''}}
+ids.forEach(id=>$(id).addEventListener('input',build));
+$('preset').addEventListener('change',e=>{let v=e.target.value;if(v==='Instagram'){$('source').value='instagram';$('medium').value='social'}if(v==='Google Ads'){$('source').value='google';$('medium').value='cpc'}if(v==='Newsletter'){$('source').value='newsletter';$('medium').value='email'}if(v==='LinkedIn'){$('source').value='linkedin';$('medium').value='social'}build()});
+function history(){let a=JSON.parse(localStorage.campaignKit||'[]');$('history').innerHTML=a.slice(-6).reverse().map(x=>'<div class="item"><b>'+x.campaign+'</b><span class="small">'+x.url+'</span></div>').join('')}
+$('save').onclick=()=>{let u=build();if(!u)return;let a=JSON.parse(localStorage.campaignKit||'[]');a.push({campaign:$('campaign').value||'untitled',url:u});localStorage.campaignKit=JSON.stringify(a.slice(-20));history()};
+$('copy').onclick=async()=>{let u=build();if(u){await navigator.clipboard.writeText(u);$('copy').textContent='Copied';setTimeout(()=>$('copy').textContent='Copy',1200)}};
+$('share').onclick=async()=>{let u=build();if(u&&navigator.share)await navigator.share({title:'Campaign link',url:u});else await navigator.clipboard.writeText(u||'')};
+$('clear').onclick=()=>{localStorage.removeItem('campaignKit');history()};history();
+</script>
+</body>
+</html>
